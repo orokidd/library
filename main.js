@@ -4,6 +4,13 @@ const myLibrary = [
         author: 'hudaa',
         pages: 246,
         read: false
+    },
+
+    {
+        title: 'we fear God',
+        author: 'hudaa',
+        pages: 265,
+        read: true
     }
 ];
 
