@@ -1,3 +1,5 @@
+const myLibrary = [];
+
 function Book(title, author, pages, read) {
     this.title = title;
     this.author = author;
@@ -8,8 +10,11 @@ function Book(title, author, pages, read) {
     }
   }
   
-  const book1 = new Book('On Earth Were Briefly Gorgeous', 'Ocean Vuong', 256, true);
-  console.log(book1.info());
-  
-  const book2 = new Book('A Little Life', 'Hanya Yanagihara', 814, false);
-  console.log(book2.info());
+function addBookToLibrary(title, author, pages, read) {
+    const book = new Book(title, author, pages, read);
+    myLibrary.push(book);
+}   
+
+
+//   const book1 = new Book('On Earth Were Briefly Gorgeous', 'Ocean Vuong', 256, true);
+//   console.log(book1.info());
