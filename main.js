@@ -1,11 +1,4 @@
-const myLibrary = [
-    {
-        title: 'arasaka',
-        author: 'hudaa',
-        pages: 246,
-        read: false
-    }
-];
+const myLibrary = [];
 
 function Book(title, author, pages, read) {
     this.title = title;
@@ -18,6 +11,10 @@ function Book(title, author, pages, read) {
     }
   }
   
+Book.prototype.changeReadStatus = function () {
+    this.read = !this.read;
+}
+
 function addBookToLibrary(title, author, pages, read) {
     const book = new Book(title, author, pages, read);
     myLibrary.push(book);
@@ -30,6 +27,8 @@ function displayBook() {
     myLibrary.forEach(book => {
         const deleteButton = document.createElement('button');
         deleteButton.textContent = 'Delete';
+        const readButton = document.createElement('button');
+        readButton.textContent = 'Read';
         const bookCard = document.createElement('div');
         bookCard.classList.add('book-card');
         bookCard.innerHTML = `
@@ -39,9 +38,16 @@ function displayBook() {
             <p>${book.read ? 'read' : 'not read yet'}</p>
         `;
         bookCard.appendChild(deleteButton);
+        bookCard.appendChild(readButton);
         deleteButton.addEventListener('click', () => deleteBook(book));
+        readButton.addEventListener('click', () => readBook(book));
         bookContainer.appendChild(bookCard);
     });
+}
+
+function readBook(book) {
+    book.changeReadStatus();
+    displayBook();
 }
 
 function deleteBook(book) {
