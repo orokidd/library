@@ -28,6 +28,8 @@ function displayBook() {
     const bookContainer = document.querySelector('.books-container');
     bookContainer.innerHTML = '';
     myLibrary.forEach(book => {
+        const deleteButton = document.createElement('button');
+        deleteButton.textContent = 'Delete';
         const bookCard = document.createElement('div');
         bookCard.classList.add('book-card');
         bookCard.innerHTML = `
@@ -36,8 +38,15 @@ function displayBook() {
             <p>${book.pages}</p>
             <p>${book.read ? 'read' : 'not read yet'}</p>
         `;
+        bookCard.appendChild(deleteButton);
+        deleteButton.addEventListener('click', () => deleteBook(book));
         bookContainer.appendChild(bookCard);
     });
+}
+
+function deleteBook(book) {
+    myLibrary.splice(myLibrary.indexOf(book), 1);
+    displayBook();
 }
 
 function displayNewButton() {

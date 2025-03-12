@@ -35,7 +35,7 @@ body {
 .new-button {
 
 
-  max-height: 50px;
+  height: fit-content;
   background-color: white;
   color: black;
   padding: 12px;
