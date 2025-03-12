@@ -4,13 +4,6 @@ const myLibrary = [
         author: 'hudaa',
         pages: 246,
         read: false
-    },
-
-    {
-        title: 'we fear God',
-        author: 'hudaa',
-        pages: 265,
-        read: true
     }
 ];
 
@@ -19,6 +12,7 @@ function Book(title, author, pages, read) {
     this.author = author;
     this.pages = pages;
     this.read = read;
+    this.id = crypto.randomUUID();
     this.info = function() {
       return `${this.title} by ${this.author}, ${this.pages} pages, ${this.read ? 'read' : 'not read yet'}`;
     }
@@ -44,9 +38,22 @@ function displayBook() {
     });
 }
 
+function displayNewButton() {
+    const bookContainer = document.querySelector('.button-container');
+    const newButton = document.createElement('button');
+    newButton.classList.add('new-button');
+    newButton.textContent = 'New Book';
+    newButton.addEventListener('click', () => {
+        console.log('new button clicked');
+    });
+    bookContainer.appendChild(newButton);
+}
+
 
 addBookToLibrary('The Great Gatsby', 'F. Scott Fitzgerald', 218, true);
+addBookToLibrary('The Catcher in the Rye', 'J.D. Salinger', 234, false);
 displayBook();
+displayNewButton();
 
 //   const book1 = new Book('On Earth Were Briefly Gorgeous', 'Ocean Vuong', 256, true);
 //   console.log(book1.info());

@@ -10,12 +10,37 @@ body {
 }
 
 .wrapper {
+  display: flex;
+
   max-width: 1200px;
   margin: auto;
+}
+
+.books-container {
+  flex: 3;
 }
 
 .book-card {
   border: 1px solid white;
   padding: 12px;
   margin: 12px;
+}
+
+.button-container {
+  display: flex;
+  justify-content: flex-end;
+  flex: 1;
+}
+
+.new-button {
+
+
+  max-height: 50px;
+  background-color: white;
+  color: black;
+  padding: 12px;
+  margin: 12px;
+  border: none;
+  cursor: pointer;
+  border-radius: 8px;
 }
