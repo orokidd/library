@@ -1,6 +1,7 @@
 * {
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
 }
 
 body {
@@ -8,5 +9,13 @@ body {
   color: white;
 }
 
+.wrapper {
+  max-width: 1200px;
+  margin: auto;
+}
 
-  
+.book-card {
+  border: 1px solid white;
+  padding: 12px;
+  margin: 12px;
+}

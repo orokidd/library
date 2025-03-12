@@ -30,7 +30,7 @@ function addBookToLibrary(title, author, pages, read) {
 }   
 
 function displayBook() {
-    const bookContainer = document.querySelector('.book-container');
+    const bookContainer = document.querySelector('.books-container');
     myLibrary.forEach(book => {
         const bookCard = document.createElement('div');
         bookCard.classList.add('book-card');
