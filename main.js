@@ -21,10 +21,12 @@ function Book(title, author, pages, read) {
 function addBookToLibrary(title, author, pages, read) {
     const book = new Book(title, author, pages, read);
     myLibrary.push(book);
+    displayBook();
 }   
 
 function displayBook() {
     const bookContainer = document.querySelector('.books-container');
+    bookContainer.innerHTML = '';
     myLibrary.forEach(book => {
         const bookCard = document.createElement('div');
         bookCard.classList.add('book-card');
@@ -44,16 +46,44 @@ function displayNewButton() {
     newButton.classList.add('new-button');
     newButton.textContent = 'New Book';
     newButton.addEventListener('click', () => {
-        console.log('new button clicked');
+        const dialog = document.getElementById('bookDialog');
+        dialog.showModal();
     });
     bookContainer.appendChild(newButton);
 }
 
+function handleDialogForm() {
+    const dialog = document.getElementById('bookDialog');
+    const form = document.getElementById('bookForm');
+
+    form.addEventListener('submit', (e) => {
+        e.preventDefault(); // Prevent form submission
+
+        // Get form values
+        const title = form.title.value;
+        const author = form.author.value;
+        const pages = parseInt(form.pages.value);
+        const read = form.read.checked;
+
+        if (title && author && pages) {
+            addBookToLibrary(title, author, pages, read);
+            dialog.close(); 
+            form.reset(); 
+        } else {
+            alert('Invalid input. Please try again.');
+        }
+    });
+
+    // Handle cancel button
+    const cancelBtn = document.getElementById('cancelBtn');
+    cancelBtn.addEventListener('click', () => {
+        dialog.close(); 
+        form.reset();
+    });
+}
 
 addBookToLibrary('The Great Gatsby', 'F. Scott Fitzgerald', 218, true);
 addBookToLibrary('The Catcher in the Rye', 'J.D. Salinger', 234, false);
 displayBook();
 displayNewButton();
-
-//   const book1 = new Book('On Earth Were Briefly Gorgeous', 'Ocean Vuong', 256, true);
-//   console.log(book1.info());
+handleDialogForm();
