@@ -37,11 +37,12 @@ function displayBook() {
             <p>${book.pages}</p>
             <p>${book.read ? 'read' : 'not read yet'}</p>
         `;
+
         bookCard.appendChild(deleteButton);
         bookCard.appendChild(readButton);
+        bookContainer.appendChild(bookCard);
         deleteButton.addEventListener('click', () => deleteBook(book));
         readButton.addEventListener('click', () => readBook(book));
-        bookContainer.appendChild(bookCard);
     });
 }
 
@@ -97,8 +98,17 @@ function handleDialogForm() {
     });
 }
 
-addBookToLibrary('The Great Gatsby', 'F. Scott Fitzgerald', 218, true);
-addBookToLibrary('The Catcher in the Rye', 'J.D. Salinger', 234, false);
-displayBook();
-displayNewButton();
-handleDialogForm();
+function populateBook() {
+    addBookToLibrary('1984', 'George Orwell', 328, false);
+    addBookToLibrary('The Great Gatsby', 'F. Scott Fitzgerald', 218, true);
+    addBookToLibrary('The Catcher in the Rye', 'J.D. Salinger', 234, false);
+}
+
+function init() {
+    populateBook();
+    displayBook();
+    displayNewButton();
+    handleDialogForm();
+}
+
+const app = init();
