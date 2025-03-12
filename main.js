@@ -29,6 +29,24 @@ function addBookToLibrary(title, author, pages, read) {
     myLibrary.push(book);
 }   
 
+function displayBook() {
+    const bookContainer = document.querySelector('.book-container');
+    myLibrary.forEach(book => {
+        const bookCard = document.createElement('div');
+        bookCard.classList.add('book-card');
+        bookCard.innerHTML = `
+            <h2>${book.title}</h2>
+            <p>${book.author}</p>
+            <p>${book.pages}</p>
+            <p>${book.read ? 'read' : 'not read yet'}</p>
+        `;
+        bookContainer.appendChild(bookCard);
+    });
+}
+
+
+addBookToLibrary('The Great Gatsby', 'F. Scott Fitzgerald', 218, true);
+displayBook();
 
 //   const book1 = new Book('On Earth Were Briefly Gorgeous', 'Ocean Vuong', 256, true);
 //   console.log(book1.info());
