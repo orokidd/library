@@ -6,11 +6,13 @@ function Book(title, author, pages, read) {
     this.pages = pages;
     this.read = read;
     this.id = crypto.randomUUID();
-    this.info = function() {
-      return `${this.title} by ${this.author}, ${this.pages} pages, ${this.read ? 'read' : 'not read yet'}`;
-    }
   }
   
+Book.prototype.showBookInfo = function () {
+    return `<h2>${this.title}</h2><p>${this.author}</p> <p>${this.pages} pages</p> 
+      <p>${this.read ? 'read' : 'not read yet'}</p>`;
+}
+
 Book.prototype.changeReadStatus = function () {
     this.read = !this.read;
 }
@@ -32,10 +34,7 @@ function displayBook() {
         const bookCard = document.createElement('div');
         bookCard.classList.add('book-card');
         bookCard.innerHTML = `
-            <h2>${book.title}</h2>
-            <p>${book.author}</p>
-            <p>${book.pages}</p>
-            <p>${book.read ? 'read' : 'not read yet'}</p>
+            ${book.showBookInfo()}
         `;
 
         bookCard.appendChild(deleteButton);
