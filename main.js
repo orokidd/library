@@ -59,7 +59,7 @@ function displayNewButton() {
     const bookContainer = document.querySelector('.button-container');
     const newButton = document.createElement('button');
     newButton.classList.add('new-button');
-    newButton.textContent = 'New Book';
+    newButton.textContent = 'New book';
     newButton.addEventListener('click', () => {
         const dialog = document.getElementById('bookDialog');
         dialog.showModal();

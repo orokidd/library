@@ -4,16 +4,17 @@
   box-sizing: border-box;
 }
 
-/* body {
-  background-color: black;
-  color: white;
-} */
+body {
+  font-family: "Poppins", sans-serif;
+}
 
 .wrapper {
+  background-color: #f3f3f3;
+  min-height: 100vh;
 }
 
 .header {
-  background-color: #f4f4f4;
+  background-color: white;
   border-bottom: 1px solid #ccc;
   
 }
@@ -34,6 +35,7 @@
   flex: 3;
   gap: 12px;
 
+  
   max-width: 1200px;
   margin: 0 auto;
   padding: 12px 12px;
@@ -41,9 +43,23 @@
 
 .book-card {
   flex: 1;
+
+
   min-width: 300px;
-  border: 1px solid rgb(0, 0, 0);
-  padding: 12px;
+  background-color: white;
+  border-radius: 6px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 18px;
+}
+
+.book-card h2 {
+  font-weight: 500;
+  color: #242424;
+}
+
+.book-card p {
+  font-weight: 400;
+  color: #585858;
 }
 
 .book-card button {
@@ -67,7 +83,11 @@
   padding: 12px;
   border: none;
   cursor: pointer;
-  border-radius: 2px;
+  border-radius: 6px;
+  width: 120px;
+  font-size: .9rem;
+  font-family: "Poppins", sans-serif;
+  font-weight: 400;
 }
 
 #bookDialog {
