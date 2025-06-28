@@ -1,10 +1,11 @@
 class Book {
-  constructor(title, author, pages, read) {
+  constructor(title, author, pages, read, url) {
     this.title = title;
     this.author = author;
     this.pages = pages;
     this.read = read;
     this.id = crypto.randomUUID();
+    this.url = url
   }
 
   showBookInfo() {
@@ -18,14 +19,14 @@ class Book {
 }
 
 const rawLibrary = JSON.parse(localStorage.getItem("library")) || [];
-const myLibrary = rawLibrary.map(book => new Book(book.title, book.author, book.pages, book.read)); // localStorage saves only plain objects, not the Book instances. So their prototype methods like showBookInfo() and changeReadStatus() are missing.
+const myLibrary = rawLibrary.map(book => new Book(book.title, book.author, book.pages, book.read, book.url)); // localStorage saves only plain objects, not the Book instances. So their prototype methods like showBookInfo() and changeReadStatus() are missing.
 
 function saveToLocalStorage() {
   localStorage.setItem("library", JSON.stringify(myLibrary));
 }
 
-function addBookToLibrary(title, author, pages, read) {
-    const book = new Book(title, author, pages, read);
+function addBookToLibrary(title, author, pages, read, url) {
+    const book = new Book(title, author, pages, read, url);
     myLibrary.push(book);
     saveToLocalStorage()
 }   
@@ -37,16 +38,23 @@ function refreshDisplay() {
         const deleteButton = document.createElement('button');
         const readButton = document.createElement('button');
         const bookCard = document.createElement('div');
+        const infoContainer = document.createElement('div')
+        const buttonContainer = document.createElement('div')
+        const img = document.createElement("img");
 
+        img.setAttribute("src", book.url);
         deleteButton.textContent = 'Delete';
-        readButton.textContent = 'Read';
+        readButton.textContent = `${book.read ? 'Read' : 'Not read'}`
         bookCard.classList.add('book-card');
-        bookCard.innerHTML = `
+        buttonContainer.classList.add('book-buttons')
+        infoContainer.classList.add('book-info')
+
+        infoContainer.innerHTML = `
             ${book.showBookInfo()}
         `;
 
-        bookCard.appendChild(deleteButton);
-        bookCard.appendChild(readButton);
+        infoContainer.append(readButton, deleteButton)
+        bookCard.append(infoContainer, img);
         bookContainer.appendChild(bookCard);
 
         deleteButton.addEventListener('click', () => {
@@ -92,9 +100,10 @@ function handleDialogForm() {
         const author = form.author.value;
         const pages = parseInt(form.pages.value);
         const read = form.read.checked;
+        const url = form.cover.value;
 
         if (title && author && pages) {
-            addBookToLibrary(title, author, pages, read);
+            addBookToLibrary(title, author, pages, read, url);
             refreshDisplay();
             dialog.close(); 
             form.reset(); 
@@ -111,9 +120,9 @@ function handleDialogForm() {
 }
 
 function populateBook() {
-    addBookToLibrary('1984', 'George Orwell', 328, false);
-    addBookToLibrary('The Great Gatsby', 'F. Scott Fitzgerald', 218, true);
-    addBookToLibrary('The Catcher in the Rye', 'J.D. Salinger', 234, false);
+    addBookToLibrary('1984', 'George Orwell', 328, false, "https://d1csarkz8obe9u.cloudfront.net/posterpreviews/book-cover-design-template-75787feabf29b152e933300fcd458156.webp?ts=1698304091");
+    addBookToLibrary('The Great Gatsby', 'F. Scott Fitzgerald', 218, true, "https://d1csarkz8obe9u.cloudfront.net/posterpreviews/motivational-self-help-book-cover-design-template-549362a7c9d568279e866eb81510239c.webp?ts=1731915633");
+    addBookToLibrary('The Catcher in the Rye', 'J.D. Salinger', 234, false, "https://d1csarkz8obe9u.cloudfront.net/posterpreviews/white-affair-party-flyer-template-design-b354673168c35af8368759001a01cfac.webp?ts=1737239766");
 }
 
 function init() {
