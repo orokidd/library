@@ -47,8 +47,7 @@ function refreshDisplay() {
         const readText = document.createElement('p')
         const bookCard = document.createElement('div');
         const infoContainer = document.createElement('div')
-        const img = document.createElement("img");
-
+        const bookCover = document.createElement("img");
         const infoText = document.createElement("div")
         const infoButtons = document.createElement("div")
 
@@ -58,11 +57,10 @@ function refreshDisplay() {
         infoText.classList.add('info-text')
         readButton.classList.add('read-button')
         deleteButton.classList.add('delete-button')
+        bookCover.classList.add('cover-image')
         if (book.read) {
         readButton.classList.add('read');
         }
-        img.classList.add('cover-image')
-
 
         infoText.innerHTML = `
             ${book.showBookInfo()}
@@ -70,14 +68,14 @@ function refreshDisplay() {
         
         readIcon.setAttribute("src", book.read ? iconPaths.bookRead : iconPaths.bookUnread)
         deleteIcon.setAttribute("src", iconPaths.bookDelete);
-        img.setAttribute("src", book.url);
+        bookCover.setAttribute("src", book.url);
         readText.textContent = `${book.read ? 'Read' : 'Not read'}`
         
         readButton.append(readIcon, readText)
         deleteButton.appendChild(deleteIcon)
         infoButtons.append(readButton, deleteButton)
         infoContainer.append(infoText, infoButtons)
-        bookCard.append(infoContainer, img);
+        bookCard.append(infoContainer, bookCover);
         bookContainer.appendChild(bookCard);
 
         deleteButton.addEventListener('click', () => {
@@ -85,8 +83,7 @@ function refreshDisplay() {
             refreshDisplay();
     });
         readButton.addEventListener('click', () => {
-            readBook(book)
-            readButton.classList.toggle("read");
+            readBook(book);
             refreshDisplay();
     });
     });
