@@ -18,8 +18,8 @@ class Book {
 }
 
 const iconPaths = {
-  bookUnread: './assets/icons/book-check.svg',
-  bookRead: './assets/icons/book-off.svg',
+  bookUnread: './assets/icons/book-off.svg',
+  bookRead: './assets/icons/book-check.svg',
   bookDelete: './assets/icons/delete.svg'
 };
 
@@ -43,6 +43,8 @@ function refreshDisplay() {
         const deleteButton = document.createElement('button');
         const deleteIcon = document.createElement('img')
         const readButton = document.createElement('button');
+        const readIcon = document.createElement('img')
+        const readText = document.createElement('p')
         const bookCard = document.createElement('div');
         const infoContainer = document.createElement('div')
         const img = document.createElement("img");
@@ -61,15 +63,17 @@ function refreshDisplay() {
         }
         img.classList.add('cover-image')
 
-        deleteIcon.setAttribute("src", iconPaths.bookDelete);
-        img.setAttribute("src", book.url);
 
-        // deleteButton.textContent = 'Delete';
-        readButton.textContent = `${book.read ? 'Read' : 'Not read'}`
         infoText.innerHTML = `
             ${book.showBookInfo()}
         `;
-
+        
+        readIcon.setAttribute("src", book.read ? iconPaths.bookRead : iconPaths.bookUnread)
+        deleteIcon.setAttribute("src", iconPaths.bookDelete);
+        img.setAttribute("src", book.url);
+        readText.textContent = `${book.read ? 'Read' : 'Not read'}`
+        
+        readButton.append(readIcon, readText)
         deleteButton.appendChild(deleteIcon)
         infoButtons.append(readButton, deleteButton)
         infoContainer.append(infoText, infoButtons)

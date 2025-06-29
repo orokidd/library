@@ -90,8 +90,36 @@ body {
   cursor: pointer;
 }
 
+.read-button {
+  background-color: #497dad;
+}
+
+.read-button:hover {
+  background-color: #365c80;
+}
+
 .read-button.read {
-  background-color: #a5c69a;
+  background-color: #689d61;
+}
+
+.read-button.read:hover {
+  background-color: #4b7246;
+}
+
+.read-button img {
+  filter: invert();
+}
+
+.delete-button {
+  background-color: #dd4d43;
+}
+
+.delete-button img {
+  filter: invert();
+}
+
+.delete-button:hover {
+  background-color: #9e352e;
 }
 
 .book-card .cover-image {
@@ -125,6 +153,11 @@ body {
 }
 
 .delete-button img {
+  width: 22px;
+  height: 22px;
+}
+
+.read-button img {
   width: 22px;
   height: 22px;
 }
