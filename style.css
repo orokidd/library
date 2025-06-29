@@ -26,6 +26,19 @@ body {
   padding: 12px 12px;
 }
 
+.new-button {
+  height: fit-content;
+  color: black;
+  padding: 12px;
+  border: none;
+  cursor: pointer;
+  border-radius: 6px;
+  width: 120px;
+  font-size: .9rem;
+  font-family: "Poppins", sans-serif;
+  font-weight: 400;
+}
+
 .books-container {
   display: flex;
   flex-wrap: wrap;
@@ -58,37 +71,20 @@ body {
 }
 
 .book-card h2 {
-  font-weight: 500;
-  color: #ffffff;
+  font-weight: 600;
+  color: white;
 }
 
 .book-card p {
   font-weight: 400;
-  color: #ffffff;
-}
-
-.book-buttons {
-  position: absolute;
+  color: white;
 }
 
 .book-card button {
-  /* opacity: 0; */
   padding: 0.6rem 1.2rem;
   border: none;
   border-radius: 4px;
   cursor: pointer;
-  /* margin-right: 0.75rem;
-  margin-top: 1rem; */
-  transition: all 0.3s ease;
-}
-
-.book-card button:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 8px 12px rgba(157, 165, 154, 0.2);
-}
-
-.book-card:hover button{
-  opacity: 1;
 }
 
 .read-button.read {
@@ -123,19 +119,6 @@ body {
 .info-buttons {
   display: flex;
   justify-content: space-between;
-}
-
-.new-button {
-  height: fit-content;
-  color: black;
-  padding: 12px;
-  border: none;
-  cursor: pointer;
-  border-radius: 6px;
-  width: 120px;
-  font-size: .9rem;
-  font-family: "Poppins", sans-serif;
-  font-weight: 400;
 }
 
 #bookDialog {
