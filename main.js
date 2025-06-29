@@ -17,6 +17,12 @@ class Book {
   }
 }
 
+const iconPaths = {
+  bookUnread: './assets/icons/book-check.svg',
+  bookRead: './assets/icons/book-off.svg',
+  bookDelete: './assets/icons/delete.svg'
+};
+
 const rawLibrary = JSON.parse(localStorage.getItem("library")) || [];
 const myLibrary = rawLibrary.map(book => new Book(book.title, book.author, book.pages, book.read, book.url)); // localStorage saves only plain objects, not the Book instances. So their prototype methods like showBookInfo() and changeReadStatus() are missing.
 
@@ -35,6 +41,7 @@ function refreshDisplay() {
     bookContainer.innerHTML = '';
     myLibrary.forEach(book => {
         const deleteButton = document.createElement('button');
+        const deleteIcon = document.createElement('img')
         const readButton = document.createElement('button');
         const bookCard = document.createElement('div');
         const infoContainer = document.createElement('div')
@@ -48,19 +55,22 @@ function refreshDisplay() {
         infoButtons.classList.add('info-buttons')
         infoText.classList.add('info-text')
         readButton.classList.add('read-button')
+        deleteButton.classList.add('delete-button')
         if (book.read) {
         readButton.classList.add('read');
         }
         img.classList.add('cover-image')
-        
+
+        deleteIcon.setAttribute("src", iconPaths.bookDelete);
         img.setAttribute("src", book.url);
-        deleteButton.textContent = 'Delete';
+
+        // deleteButton.textContent = 'Delete';
         readButton.textContent = `${book.read ? 'Read' : 'Not read'}`
-        
         infoText.innerHTML = `
             ${book.showBookInfo()}
         `;
 
+        deleteButton.appendChild(deleteIcon)
         infoButtons.append(readButton, deleteButton)
         infoContainer.append(infoText, infoButtons)
         bookCard.append(infoContainer, img);
