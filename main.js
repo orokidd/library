@@ -38,21 +38,27 @@ function refreshDisplay() {
         const readButton = document.createElement('button');
         const bookCard = document.createElement('div');
         const infoContainer = document.createElement('div')
-        const buttonContainer = document.createElement('div')
         const img = document.createElement("img");
 
+        const infoText = document.createElement("div")
+        const infoButtons = document.createElement("div")
+
+        bookCard.classList.add('book-card');
+        infoContainer.classList.add('book-info')
+        infoButtons.classList.add('info-buttons')
+        infoText.classList.add('info-text')
+        img.classList.add('cover-image')
+        
         img.setAttribute("src", book.url);
         deleteButton.textContent = 'Delete';
         readButton.textContent = `${book.read ? 'Read' : 'Not read'}`
-        bookCard.classList.add('book-card');
-        buttonContainer.classList.add('book-buttons')
-        infoContainer.classList.add('book-info')
-
-        infoContainer.innerHTML = `
+        
+        infoText.innerHTML = `
             ${book.showBookInfo()}
         `;
 
-        infoContainer.append(readButton, deleteButton)
+        infoButtons.append(readButton, deleteButton)
+        infoContainer.append(infoText, infoButtons)
         bookCard.append(infoContainer, img);
         bookContainer.appendChild(bookCard);
 
