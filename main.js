@@ -121,7 +121,7 @@ function handleDialogForm() {
         const author = form.author.value;
         const pages = parseInt(form.pages.value);
         const read = form.read.checked;
-        const url = form.cover.value;
+        const url = form.cover.value || './assets/bg/blank.jpg';
 
         if (title && author && pages) {
             addBookToLibrary(title, author, pages, read, url);
