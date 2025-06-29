@@ -9,8 +9,7 @@ class Book {
   }
 
   showBookInfo() {
-    return `<h2>${this.title}</h2><p>${this.author}</p><p>${this.pages} pages</p>
-      <p>${this.read ? 'Read' : 'Not read'}</p>`;
+    return `<h2>${this.title}</h2><p>${this.author}</p><p>${this.pages} pages</p>`;
   }
 
   changeReadStatus() {

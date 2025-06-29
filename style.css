@@ -6,17 +6,14 @@
 
 body {
   font-family: "Poppins", sans-serif;
-}
-
-.wrapper {
   background-color: #f3f3f3;
   min-height: 100vh;
 }
 
 .header {
-  background-color: white;
+  background-color: #485749;
   border-bottom: 1px solid #ccc;
-  
+  color: whitesmoke;
 }
 
 .header-content {
@@ -31,29 +28,30 @@ body {
 
 .books-container {
   display: flex;
-  justify-content: center;
   flex-wrap: wrap;
-  flex: 3;
-  gap: 12px;
-
+  justify-content: flex-start;
+  gap: 42px;
+  
   max-width: 1200px;
-  margin: 0 auto;
-  padding: 12px 12px;
+  margin: 42px auto;
+  background-color: #e4e4e4;
+  padding: 100px;
+  border-radius: 12px;
 }
 
 .book-card {
   flex: 1;
+  position: relative;
 
   min-width: 300px;
-  max-width: 300px;
-  max-height: 400px;
+  max-width: 305px;
+  max-height: 420px;
   background-color: white;
   border-radius: 6px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   /* padding: 1.5rem; */
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  /* overflow: hidden; */
-  position: relative;
+  overflow: hidden;
 }
 
 .book-card:hover {
@@ -101,18 +99,19 @@ body {
 }
 
 .book-info {
+  position: absolute;
   opacity: 0;
   width: 100%;
   height: 100%;
-  position: absolute;
+  
+  transition: all 0.2s ease;
+  padding: 22px;
 }
 
 .book-info:hover {
   opacity: 1;
-  width: 100%;
-  height: 100%;
   position: absolute;
-  background-color: #00000082;
+  background-color: #000000a4;
 }
 
 .button-container {
