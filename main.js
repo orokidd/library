@@ -47,6 +47,10 @@ function refreshDisplay() {
         infoContainer.classList.add('book-info')
         infoButtons.classList.add('info-buttons')
         infoText.classList.add('info-text')
+        readButton.classList.add('read-button')
+        if (book.read) {
+        readButton.classList.add('read');
+        }
         img.classList.add('cover-image')
         
         img.setAttribute("src", book.url);
@@ -68,6 +72,7 @@ function refreshDisplay() {
     });
         readButton.addEventListener('click', () => {
             readBook(book)
+            readButton.classList.toggle("read");
             refreshDisplay();
     });
     });
