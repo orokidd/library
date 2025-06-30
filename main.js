@@ -160,9 +160,9 @@ function handleDialogForm() {
 }
 
 function populateBook() {
-    addBookToLibrary('1984', 'George Orwell', 328, false, "https://d1csarkz8obe9u.cloudfront.net/posterpreviews/book-cover-design-template-75787feabf29b152e933300fcd458156.webp?ts=1698304091");
-    addBookToLibrary('The Great Gatsby', 'F. Scott Fitzgerald', 218, true, "https://d1csarkz8obe9u.cloudfront.net/posterpreviews/motivational-self-help-book-cover-design-template-549362a7c9d568279e866eb81510239c.webp?ts=1731915633");
-    addBookToLibrary('The Catcher in the Rye', 'J.D. Salinger', 234, false, "https://d1csarkz8obe9u.cloudfront.net/posterpreviews/white-affair-party-flyer-template-design-b354673168c35af8368759001a01cfac.webp?ts=1737239766");
+    addBookToLibrary('1984', 'George Orwell', 328, false, "https://cdn2.penguin.com.au/covers/original/9781784878979.jpg");
+    addBookToLibrary('The Great Gatsby', 'F. Scott Fitzgerald', 218, true, "https://i.pinimg.com/474x/15/84/9f/15849fc30c787f0b8308bc0273b9591e.jpg");
+    addBookToLibrary('The Catcher in the Rye', 'J.D. Salinger', 234, false, "https://m.media-amazon.com/images/I/8125BDk3l9L.jpg");
 }
 
 function init() {
