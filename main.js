@@ -81,9 +81,8 @@ function refreshDisplay() {
         deleteButton.addEventListener('click', (event) => {
             handleDeleteButton(event, book)
     });
-        readButton.addEventListener('click', () => {
-            readBook(book);
-            refreshDisplay();
+        readButton.addEventListener('click', (event) => {
+            handleReadButton(event, book)
     });
     });
 }
@@ -91,12 +90,23 @@ function refreshDisplay() {
 function handleDeleteButton(event, book) {
     deleteBook(book);
     const btn = event.currentTarget;
-    const card = btn.closest('.book-card'); // Finds the nearest ancestor with class "card"
+    const card = btn.closest('.book-card');
   
   if (card) {
-    card.remove(); // Or do whatever you want with it
+    card.remove();
   }
 }
+
+function handleReadButton(event, book) {
+    readBook(book);
+    const btn = event.currentTarget;
+    const btnIcon = btn.querySelector('img')
+    const btnText = btn.querySelector('p')
+
+    btn.classList.toggle("read");
+    btnIcon.setAttribute("src", book.read ? iconPaths.bookRead : iconPaths.bookUnread)
+    btnText.textContent = `${book.read ? 'Read' : 'Not read'}`
+}   
 
 function readBook(book) {
     book.changeReadStatus();
