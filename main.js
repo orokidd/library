@@ -78,15 +78,24 @@ function refreshDisplay() {
         bookCard.append(infoContainer, bookCover);
         bookContainer.appendChild(bookCard);
 
-        deleteButton.addEventListener('click', () => {
-            deleteBook(book)
-            refreshDisplay();
+        deleteButton.addEventListener('click', (event) => {
+            handleDeleteButton(event, book)
     });
         readButton.addEventListener('click', () => {
             readBook(book);
             refreshDisplay();
     });
     });
+}
+
+function handleDeleteButton(event, book) {
+    deleteBook(book);
+    const btn = event.currentTarget;
+    const card = btn.closest('.book-card'); // Finds the nearest ancestor with class "card"
+  
+  if (card) {
+    card.remove(); // Or do whatever you want with it
+  }
 }
 
 function readBook(book) {
