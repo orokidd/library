@@ -42,7 +42,7 @@ body {
 .books-container {
   display: flex;
   flex-wrap: wrap;
-  justify-content: flex-start;
+  justify-content: center;
   gap: 42px;
   
   max-width: 1200px;
@@ -57,9 +57,8 @@ body {
   position: relative;
 
   min-width: 300px;
-  max-width: 305px;
+  max-width: 300px; 
   max-height: 420px;
-  background-color: white;
   border-radius: 6px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -205,4 +204,34 @@ body {
 #bookForm button[type="button"] {
   background-color: #f44336;
   color: white;
+}
+
+@media (max-width: 1200px) {
+  .header-content {
+  padding: 12px 42px;
+}
+  .books-container {
+    margin: 42px;
+  }
+}
+
+@media (max-width: 480px) {
+  .header-content {
+    padding: 12px 24px;
+}
+  .books-container {
+    margin: 24px;
+  }
+  .site-title {
+    font-size: 0.8rem;
+  }
+  .new-button {
+  padding: 8px;
+  border-radius: 4px;
+  width: 90px;
+  font-size: .8rem;
+}
+  .book-card {
+  min-width: 180px;
+}
 }
